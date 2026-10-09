@@ -9,7 +9,7 @@
     bookingUrl: "",      // ONE-TIME STEP: Google Calendar appointment-schedule booking page, normal slots (legalcarepro)
     urgentBookingUrl: "", // ONE-TIME STEP: separate urgent appointment schedule (from 1:30 PM)
     cashfreeUrl: "",     // ONE-TIME STEP: Cashfree payment link/form once the account is active
-    hours: { "In person": [17 * 60, 21 * 60], "Telephonic": [16 * 60, 21 * 60], "WhatsApp": [16 * 60, 21 * 60], "Urgent": [13 * 60 + 30, 21 * 60] },
+    hours: { "In person": [17 * 60, 21 * 60], "Telephonic": [16 * 60, 21 * 60], "WhatsApp": [16 * 60, 21 * 60], "Video call": [16 * 60, 21 * 60], "Urgent": [13 * 60 + 30, 21 * 60] },
     gap: 15, wa: "919872206969", upi: "9872206969-2@okbizaxis"
   };
   var W = window.MLW_CONFIG || {}; ["appsScriptUrl", "bookingUrl", "urgentBookingUrl", "cashfreeUrl"].forEach(function (k) { if (W[k]) CONFIG[k] = W[k]; });
@@ -19,7 +19,13 @@
   var val = function (n) { var el = f.querySelector('[name="' + n + '"]:checked') || f.querySelector('[name="' + n + '"]'); return el ? (el.value || "").trim() : ""; };
   var mins = function () { var d = f.querySelector('[name="Duration"]:checked'); return d ? +d.getAttribute("data-min") : 0; };
   var prio = function () { return val("Priority") || "Normal"; };
-  var fee = function () { return mins() / 30 * CONFIG.feePer30[prio()]; };
+  var baseFee = function () { return mins() / 30 * CONFIG.feePer30[prio()]; };
+  // Early-booking benefit (normal consultations booked 7+ days ahead): client chooses 10% off the fee OR a complimentary extra 15 minutes
+  var EB_DISC = "10% discount on the fee", EB_TIME = "Complimentary extra 15 minutes";
+  var ebChoice = function () { if (!earlyBird()) return ""; var r = f.querySelector('[name="Early-booking benefit"]:checked'); return r ? r.value : ""; };
+  var SVCFEE = W.serviceFees || {}; var svc = function () { return val("Service requested") || "Consultation"; }; var isSvc = function () { return svc() !== "Consultation"; }; var svcFee = function () { return +SVCFEE[svc()] || 0; };
+  var fee = function () { if (isSvc()) return svcFee(); return ebChoice() === EB_DISC ? Math.round(baseFee() * 0.9) : baseFee(); };
+  var ebText = function () { var c = ebChoice(); if (!c) return ""; return c === EB_DISC ? "Early-booking benefit chosen: 10% discount (fee " + inr(baseFee()) + " less 10% = " + inr(fee()) + ")." : "Early-booking benefit chosen: a complimentary extra 15 minutes (" + mins() + " minutes booked, " + (mins() + 15) + " minutes provided)."; };
   var hhmm = function (m) { var h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? "PM" : "AM", h12 = ((h + 11) % 12) + 1; return h12 + ":" + (mm < 10 ? "0" : "") + mm + " " + ap; };
 
   // booking reference
@@ -42,14 +48,32 @@
     sel.value = cur;
   }
   function docs() { var a = Array.prototype.map.call(f.querySelectorAll(".cs-docchk:checked"), function (x) { return x.value; }); $("cs-docs-field").value = a.join(", "); return a; }
+  function earlyBird() { // complimentary extra 15 minutes when the slot is 7+ days after booking (not for urgent)
+    if (prio() === "Urgent" || isSvc()) return false;
+    var d = val("Preferred date"); if (!d) return false;
+    var slot = new Date(d + "T00:00:00"), today = new Date(); today.setHours(0,0,0,0);
+    return (slot - today) / 86400000 >= 7;
+  }
   function update() {
+    var eb = document.getElementById("cs-early"), ok = earlyBird();
+    if (eb) { eb.hidden = !ok; Array.prototype.forEach.call(eb.querySelectorAll("input"), function (i, n) { i.disabled = !ok; i.required = ok && n === 0; }); }
     slots(); cal(); docs();
+    var sv = isSvc(), tbc = sv && !svcFee(), dfs = $("cs-dur-fs"), d30 = f.querySelector('[name="Duration"][data-min="30"]');
+    if (dfs) dfs.hidden = sv; if (d30) d30.required = !sv;
+    Array.prototype.forEach.call(f.querySelectorAll('#cs-payfs [name="Payment mode"], #cs-payfs [name="Payment reference (UTR)"], #cs-shot'), function (el) { el.required = !tbc; });
+    if ($("cs-tbc-note")) $("cs-tbc-note").hidden = !tbc;
+    if (sv) {
+      $("cs-fee").innerHTML = tbc ? svc() + ": <b>[fee to be confirmed]</b>. The fee and turnaround will be confirmed to you in writing; pay only after that confirmation." : svc() + ": <b>" + inr(fee()) + "</b>, payable in advance.";
+      $("cs-pay").hidden = tbc; $("cs-fee-field").value = tbc ? "To be confirmed" : fee();
+      if (!tbc) { $("cs-amt").textContent = inr(fee()); $("cs-upi").href = "upi://pay?pa=" + CONFIG.upi + "&pn=Gagandeep%20Goel&am=" + fee() + "&cu=INR&tn=" + encodeURIComponent(svc()); $("cs-upi").textContent = "Pay " + inr(fee()) + " by UPI app"; }
+      $("cs-wa").href = "https://wa.me/" + CONFIG.wa + "?text=" + encodeURIComponent(summary()); return;
+    }
     var r = CONFIG.feePer30[prio()];
     Array.prototype.forEach.call(f.querySelectorAll(".cs-dfee"), function (el) { el.textContent = inr(+el.getAttribute("data-min") / 30 * r); });
     $("cs-urgent-note").hidden = prio() !== "Urgent";
     var m = mins();
     if (m) {
-      $("cs-fee").innerHTML = (prio() === "Urgent" ? "Urgent fee" : "Fee") + " for " + m + " minutes: <b>" + inr(fee()) + "</b>, payable in advance. The consultation goes ahead only after payment.";
+      $("cs-fee").innerHTML = (prio() === "Urgent" ? "Urgent fee" : "Fee") + " for " + m + " minutes: " + (ebChoice() === EB_DISC ? "<s>" + inr(baseFee()) + "</s> " : "") + "<b>" + inr(fee()) + "</b>" + (ebChoice() === EB_DISC ? " (10% early-booking discount)" : ebChoice() === EB_TIME ? " (with a complimentary extra 15 minutes)" : "") + ", payable in advance. The consultation goes ahead only after payment.";
       $("cs-pay").hidden = false; $("cs-amt").textContent = inr(fee());
       $("cs-upi").href = "upi://pay?pa=" + CONFIG.upi + "&pn=Gagandeep%20Goel&am=" + fee() + "&cu=INR&tn=" + encodeURIComponent((prio() === "Urgent" ? "Urgent consultation " : "Consultation ") + m + " min");
       $("cs-upi").textContent = "Pay " + inr(fee()) + " by UPI app";
@@ -60,12 +84,14 @@
   }
   function summary() {
     var keys = ["Consultation type", "Priority", "Duration", "Preferred date", "Preferred start time", "Name", "Mobile", "email", "Court / forum", "Case type", "Case no / CNR", "Parties", "Current stage", "Next date", "Advice sought", "Payment mode", "Payment reference (UTR)"];
-    var lines = ["Consultation booking request (masterlegalwork.com)", "Booking reference: " + REF];
+    var lines = [(isSvc() ? svc() + " request" : "Consultation booking request") + " (masterlegalwork.com)", "Booking reference: " + REF, "Service requested: " + svc()];
     keys.forEach(function (k) { var v = val(k); if (v) lines.push((k === "email" ? "Email" : k) + ": " + v); });
-    if (mins()) lines.push("Fee: " + inr(fee()));
+    if (isSvc()) lines.push("Fee: " + (svcFee() ? inr(fee()) : "to be confirmed in writing")); else if (mins()) lines.push("Fee: " + inr(fee()));
+    if (ebText()) lines.push(ebText());
     lines.push("Payment screenshot and documents: sending in this chat");
     return lines.join("\n");
   }
+  try { var qs = new URLSearchParams(location.search).get("service"); if (qs) { var o = f.querySelector('[name="Service requested"][data-slug="' + qs.replace(/[^a-z-]/g, "") + '"]'); if (o) o.checked = true; } } catch (e) {}
   f.addEventListener("change", update); f.addEventListener("input", function (e) { if (e.target.tagName !== "SELECT") $("cs-wa").href = "https://wa.me/" + CONFIG.wa + "?text=" + encodeURIComponent(summary()); });
   update();
 
@@ -78,10 +104,10 @@
       return err("Please complete: " + what + ".", bad); }
     var file = $("cs-shot").files[0];
     if (file && (file.size > 2 * 1024 * 1024 || !/^image\//.test(file.type))) { ev.preventDefault(); return err("The payment screenshot must be an image of up to 2 MB.", $("cs-shot")); }
-    var name = val("Name"), amount = inr(fee());
+    var name = val("Name"), amount = (isSvc() && !svcFee()) ? "fee to be confirmed" : inr(fee());
     docs();
-    $("cs-subject").value = "Consultation booking " + REF + ": " + name + " | " + (prio() === "Urgent" ? "URGENT | " : "") + val("Consultation type") + " | " + val("Duration") + " | " + val("Preferred date") + " | " + amount + " (pending confirmation)";
-    $("cs-autoresponse").value = "Dear " + name + ",\n\nThank you. Master Legal Work has received your consultation request, booking reference " + REF + " (" + (prio() === "Urgent" ? "URGENT, " : "") + val("Consultation type") + ", " + val("Duration") + ", requested " + val("Preferred date") + " " + val("Preferred start time") + ").\n\nFee: " + amount + ", payable in advance. Payment details: UPI " + CONFIG.upi + "; or Yes Bank current account 001563300002051, IFSC YESB0000015; or ICICI Bank savings account 093501-500588, IFSC ICIC0001896; account name Gagandeep Goel. Your payment reference: " + val("Payment reference (UTR)") + ".\n\nPlease send all relevant documents simultaneously to masterlegalwork@gmail.com and WhatsApp +91 9872206969, quoting your name and booking reference (" + REF + "), so they can be studied before the consultation.\n\nThe consultation goes ahead only after the payment is received; until then your booking is pending. The time will be confirmed to you on WhatsApp or email. The fee is non-refundable; the consultation can be rescheduled once with at least 24 hours' notice. A consultation does not by itself create an advocate-client relationship.\n\nMaster Legal Work, Advocate Gagandeep Goel\nTelephone / WhatsApp: +91 9872206969";
+    $("cs-subject").value = (isSvc() ? svc() + " request " : "Consultation booking ") + REF + ": " + name + " | " + (prio() === "Urgent" ? "URGENT | " : "") + val("Consultation type") + " | " + val("Duration") + " | " + val("Preferred date") + " | " + amount + (ebChoice() ? " | early-booking: " + (ebChoice() === EB_DISC ? "10% off" : "+15 min") : "") + " (pending confirmation)";
+    $("cs-autoresponse").value = "Dear " + name + ",\n\nThank you. Master Legal Work has received your consultation request, booking reference " + REF + " (" + (isSvc() ? svc() + ", contact by " : "") + (prio() === "Urgent" ? "URGENT, " : "") + val("Consultation type") + ", " + val("Duration") + ", requested " + val("Preferred date") + " " + val("Preferred start time") + ").\n\nFee: " + amount + (isSvc() && !svcFee() ? "; the chambers will confirm the fee and turnaround in writing before you pay." : ", payable in advance.") + (ebText() ? " " + ebText() : "") + " Payment details: UPI " + CONFIG.upi + "; or Yes Bank current account 001563300002051, IFSC YESB0000015; or ICICI Bank savings account 093501-500588, IFSC ICIC0001896; account name Gagandeep Goel. Your payment reference: " + val("Payment reference (UTR)") + ".\n\nPlease send all relevant documents simultaneously to masterlegalwork@gmail.com and WhatsApp +91 9872206969, quoting your name and booking reference (" + REF + "), so they can be studied before the consultation.\n\nFor larger sets: create a Google Drive folder named [Your Name - Booking Ref], upload your case documents, and share it with masterlegalwork@gmail.com as Editor; then email/WhatsApp us the link.\n\nThe consultation goes ahead only after the payment is received; until then your booking is pending. The time will be confirmed to you on WhatsApp or email. The fee is non-refundable; the consultation can be rescheduled once with at least 24 hours' notice. A consultation does not by itself create an advocate-client relationship.\n\nMaster Legal Work, Advocate Gagandeep Goel\nTelephone / WhatsApp: +91 9872206969";
     var base = location.pathname.replace(/consultation\/.*$/, "");
     $("cs-next").value = location.origin + base + "consultation/thanks.html";
     try { sessionStorage.setItem("mlw_cs_summary", summary()); sessionStorage.setItem("mlw_cs_ref", REF); sessionStorage.setItem("mlw_cs_name", name); } catch (e) {}
@@ -90,7 +116,7 @@
     ev.preventDefault();
     var data = {}; Array.prototype.forEach.call(f.elements, function (el) { if (!el.name || el.type === "file" || el.name.charAt(0) === "_" && el.name !== "_honey") return; if ((el.type === "radio" || el.type === "checkbox") && !el.checked) return; data[el.name] = el.value; });
     data["Booking reference"] = REF; data["Documents held"] = docs().join(", ");
-    data["Fee (INR)"] = fee(); data._autoresponse = $("cs-autoresponse").value; data._subject = $("cs-subject").value;
+    data["Fee (INR)"] = (isSvc() && !svcFee()) ? "To be confirmed" : fee(); data["Service requested"] = svc(); data["Early-booking benefit"] = ebText() || "Not applicable"; data["Fee before benefit (INR)"] = baseFee(); data._autoresponse = $("cs-autoresponse").value; data._subject = $("cs-subject").value;
     var send = function (b64) {
       if (b64) { data._file = b64; data._fileName = file.name; data._fileType = file.type; }
       fetch(CONFIG.appsScriptUrl, { method: "POST", body: JSON.stringify(data) })
