@@ -1,17 +1,9 @@
 {
- "generated": "2026-10-09T15:31:54.161699+00:00",
+ "generated": "2026-10-09T15:28:23.029623+00:00",
  "categories": [
   {
    "name": "Supreme Court",
    "items": [
-    {
-     "title": "Temporary Misappropriation Cannot Constitute Criminal Breach Of Trust Unless Entrustment And Dishonest Intention Are Proved: Supreme Court",
-     "excerpt": "The Court restored the acquittal of a Telephone Department cashier after finding that the prosecution failed to prove entrustment of the alleged collections, misappropriation or dishonest intention.",
-     "link": "https://www.verdictum.in/supreme-court/ramkrushna-prahllad-dongardive-v-state-of-maharashtra-2026-insc-1099-1623698",
-     "source": "Verdictum",
-     "date": "2026-10-09T15:30:11+00:00",
-     "category": "Supreme Court"
-    },
     {
      "title": "Don't Completely Stop Trains/Metro In Delhi To Handle October 10 Protests : Supreme Court To Centre",
      "excerpt": "The Court asked the Centre to allow the services in a regulated manner so that the general public is not put to inconvenience.",
@@ -66,6 +58,14 @@
      "link": "https://www.livelaw.in/arbitration-cases/supreme-court-disputes-arising-joint-venture-agreement-memorandum-of-understanding-553966",
      "source": "LiveLaw",
      "date": "2026-10-09T13:25:16+00:00",
+     "category": "Supreme Court"
+    },
+    {
+     "title": "2026 LiveLaw (SC) 1035 | Pratap Singh Baghel v Akanksha Shukla",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/sc-judgments/2026-livelaw-sc-1035-pratap-singh-baghel-v-akanksha-shukla-553964",
+     "source": "LiveLaw",
+     "date": "2026-10-09T13:17:06+00:00",
      "category": "Supreme Court"
     }
    ]
@@ -225,14 +225,6 @@
    "name": "Criminal",
    "items": [
     {
-     "title": "Temporary Misappropriation Cannot Constitute Criminal Breach Of Trust Unless Entrustment And Dishonest Intention Are Proved: Supreme Court",
-     "excerpt": "The Court restored the acquittal of a Telephone Department cashier after finding that the prosecution failed to prove entrustment of the alleged collections, misappropriation or dishonest intention.",
-     "link": "https://www.verdictum.in/supreme-court/ramkrushna-prahllad-dongardive-v-state-of-maharashtra-2026-insc-1099-1623698",
-     "source": "Verdictum",
-     "date": "2026-10-09T15:30:11+00:00",
-     "category": "Criminal"
-    },
-    {
      "title": "Magistrate Cannot Give Criminal Colour To Administrative Dispute Without Following Section 156(3) CrPC Procedure: J&K&L High Court",
      "excerpt": "",
      "link": "https://www.livelaw.in/high-court/jammu-kashmir/magistrate-cannot-give-criminal-colour-to-administrative-dispute-without-following-section-1563-crpc-procedure-jk-high-court-553889",
@@ -286,6 +278,14 @@
      "link": "https://www.livelaw.in/high-court/bombay-high-court/section-4824-bnss-bar-pre-arrest-bail-not-absolute-553884",
      "source": "LiveLaw",
      "date": "2026-10-09T12:20:19+00:00",
+     "category": "Criminal"
+    },
+    {
+     "title": "Delhi High Court Directs Trial Courts To Verify Accused's Address Before Declaring Them Absconders",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/high-court/delhi-high-court/delhi-high-court-directs-trial-courts-to-verify-accuseds-address-before-declaring-them-absconders-553928",
+     "source": "LiveLaw",
+     "date": "2026-10-09T11:20:39+00:00",
      "category": "Criminal"
     }
    ]
@@ -374,7 +374,7 @@
   {
    "source": "Verdictum",
    "ok": true,
-   "items": 48
+   "items": 49
   },
   {
    "source": "LawTrend",

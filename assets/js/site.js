@@ -1,6 +1,6 @@
 /* Master Legal Work v2 — navigation, notices, reveal, filters, click-to-load video, PWA. No dependencies. */
 (function(){"use strict";
-var d=document,root=d.documentElement;root.classList.add("js");
+var d=document,root=d.documentElement;if(!root.classList.contains("js"))root.classList.add("js");
 var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* menu */
 var t=d.querySelector(".nav-toggle"),m=d.getElementById("menu");
@@ -22,7 +22,7 @@ if(!ack)n.hidden=false;var nb=n.querySelector("button");if(nb)nb.addEventListene
 var rv=d.querySelectorAll(".rv");
 if(rv.length&&"IntersectionObserver" in window&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});rv.forEach(function(x){io.observe(x);});}
 else rv.forEach(function(x){x.classList.add("in");});
-if(!RM){var px=d.querySelectorAll("[data-parallax] img");if(px.length){var tick=false;var pf=function(){px.forEach(function(img){var r=img.parentNode.parentNode.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;var p=(r.top+r.height/2-innerHeight/2)/innerHeight;img.style.transform="scale(1.08) translate3d(0,"+(p*-28).toFixed(1)+"px,0)";});tick=false;};
+if(!RM&&matchMedia("(min-width: 900px) and (hover: hover)").matches){var px=d.querySelectorAll("[data-parallax] img");if(px.length){var tick=false;var pf=function(){px.forEach(function(img){var r=img.parentNode.parentNode.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;var p=(r.top+r.height/2-innerHeight/2)/innerHeight;img.style.transform="scale(1.08) translate3d(0,"+(p*-28).toFixed(1)+"px,0)";});tick=false;};
 window.addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(pf);}},{passive:true});pf();}}
 /* filters: [data-filter-scope] containing .search input, .filters buttons[data-cat], items [data-item][data-cat][data-text] */
 d.querySelectorAll("[data-filter-scope]").forEach(function(sc){

@@ -812,3 +812,6 @@ kbd{font-family:var(--mono);font-size:.82em;border:1px solid var(--line-2);borde
 .nav-cta{letter-spacing:.08em}
 .steps3,.tline{list-style:none}
 @media (min-width:1181px) and (max-width:1440px){.site-header .brand-txt{display:none}}
+@media (max-width:900px){.site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--ivory)}.lux-hero img{transform:none}}
+.mf-check a,.f-legal a,.small a,p a:not([class]){text-decoration:underline}
+@media (min-width:1100px){.cs-plans{grid-template-columns:repeat(4,1fr)!important}}
