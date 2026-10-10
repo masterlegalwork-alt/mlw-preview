@@ -95,7 +95,9 @@
     $("cs-next").value = location.origin + base + "consultation/thanks.html";
     try { sessionStorage.setItem("mlw_cs_summary", summary()); sessionStorage.setItem("mlw_cs_ref", REF); sessionStorage.setItem("mlw_cs_name", name); } catch (e) {}
     $("cs-submit").disabled = true; $("cs-submit").textContent = "Sending\u2026";
-    if (!CONFIG.appsScriptUrl) { ev.preventDefault(); $("cs-submit").disabled = false; $("cs-submit").textContent = "Send booking request"; return err("Preview only: the booking form is switched off on this preview site."); }
+    if (!CONFIG.appsScriptUrl) { ev.preventDefault(); $("cs-submit").disabled = false; $("cs-submit").textContent = "Send booking request"; return err("Preview only: the booking form is switched off on this preview site."); } if (false) {
+      ev.preventDefault(); try { sessionStorage.setItem("mlw_cs_handoff", "1"); } catch (e) {}
+      location.href = $("cs-next").value + "?handoff=1"; return; }
     ev.preventDefault();
     var data = {}; Array.prototype.forEach.call(f.elements, function (el) { if (!el.name || el.type === "file" || el.name.charAt(0) === "_" && el.name !== "_honey") return; if ((el.type === "radio" || el.type === "checkbox") && !el.checked) return; data[el.name] = el.value; });
     data["Booking reference"] = REF; data["Documents held"] = docs().join(", "); data["Fee (INR)"] = $("cs-fee-field").value; data["Service requested"] = svc();

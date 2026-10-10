@@ -15,6 +15,13 @@
       var data = { _form: f.getAttribute("data-mlw-form") };
       Array.prototype.forEach.call(f.elements, function (el) { if (!el.name || el.name === "_honey") return; if ((el.type === "checkbox" || el.type === "radio") && !el.checked) return; data[el.name] = el.value; });
       data["Page"] = location.pathname; data["Submitted (browser time)"] = new Date().toString();
+      if (!C.appsScriptUrl) { // no backend configured: truthful hand-off instead of a silent failure
+        var lines = []; Object.keys(data).forEach(function (k) { if (k.charAt(0) !== "_" && k.indexOf("Consent") !== 0 && k !== "Submitted (browser time)" && data[k]) lines.push(k + ": " + data[k]); });
+        var kind = {subscribe: "Legal updates subscription", retainer: "Corporate retainer enquiry", product: "Request: " + (data.Product || "")}[data._form] || "Website enquiry";
+        var txt = kind + "\n\n" + lines.join("\n");
+        msg.innerHTML = "Online submission is not connected yet, so this has <b>not</b> been sent. Please send it on <a href=\"https://wa.me/919872206969?text=" + encodeURIComponent(txt) + "\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> or by <a href=\"mailto:" + (C.email || "masterlegalwork@gmail.com") + "?subject=" + encodeURIComponent(kind) + "&body=" + encodeURIComponent(txt) + "\">email</a>.";
+        msg.hidden = false; msg.className = "mf-msg bad"; return;
+      }
       var url, opts;
       if (C.appsScriptUrl) { url = C.appsScriptUrl; opts = { method: "POST", body: JSON.stringify(data) }; }
       else {

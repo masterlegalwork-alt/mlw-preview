@@ -61,3 +61,7 @@ document.querySelectorAll("[data-map]").forEach(function(m){var b=m.querySelecto
   var bar=document.createElement("div");bar.className="pwa-bar";bar.setAttribute("role","region");bar.setAttribute("aria-label","Install");
   bar.innerHTML='<p>Keep cause lists, VC links and legal updates one tap away.</p><button type="button" class="btn-outline" data-i>Add to home screen</button><button type="button" class="pwa-x" data-x aria-label="Dismiss">Not now</button>';
   document.body.appendChild(bar);bar.querySelector("[data-i]").onclick=function(){ev.prompt();bar.remove();};bar.querySelector("[data-x]").onclick=function(){bar.remove();};});})();
+/* Old single-page anchors (pre-v3 live site) -> v3 pages, only when the anchor no longer exists on the page. */
+(function () { var m = {"#about": "chambers.html", "#team": "profile.html", "#gallery": "chambers.html", "#practice": "practice.html", "#contact": "contact.html", "#home": ""};
+  var h = location.hash, b = (window.MLW_CONFIG && window.MLW_CONFIG.base) || "";
+  if (h && m.hasOwnProperty(h) && /\/(index\.html)?$/.test(location.pathname) && !document.getElementById(h.slice(1))) location.replace(b + "/" + m[h]); })();
