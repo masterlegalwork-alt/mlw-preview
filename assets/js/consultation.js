@@ -25,7 +25,7 @@
   var isSvc = function () { return svc() !== "Consultation"; };
   var svcFee = function () { var o = SVCFEE[svc()]; return o ? (+o.amt || 0) : 0; };
   var svcFrom = function () { var o = SVCFEE[svc()]; return o && o.from ? "From " : ""; };
-  var svcNote = function () { var o = SVCFEE[svc()]; return o && o.note ? " (final fee " + o.note + ")" : ""; };
+  var svcNote = function () { var o = SVCFEE[svc()]; return (o && o.unit ? " " + o.unit : "") + (o && o.note ? " (final fee " + o.note + ")" : ""); };
   var fee = function () { return isSvc() ? svcFee() : mins() / 30 * CONFIG.feePer30[prio()]; };
   var feeText = function () { if (isSvc()) return svcFee() ? svcFrom() + inr(fee()) + svcNote() + ", subject to scope confirmation" : "to be confirmed in writing before any payment"; return mins() ? inr(fee()) : ""; };
   var hhmm = function (m) { var h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? "PM" : "AM", h12 = ((h + 11) % 12) + 1; return h12 + ":" + (mm < 10 ? "0" : "") + mm + " " + ap; };
