@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10T20:06:04.595851+00:00",
+ "generated": "2026-10-10T23:35:56.918497+00:00",
  "categories": [
   {
    "name": "Supreme Court",
@@ -82,14 +82,6 @@
      "category": "High Courts"
     },
     {
-     "title": "Kerala High Court designates trial lawyer P Balasubramanian Menon with longest law career as Senior Advocate",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/news/kerala-high-court-designates-trial-lawyer-p-balasubramanian-menon-with-longest-law-career-as-senior-advocate",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T16:22:20+00:00",
-     "category": "High Courts"
-    },
-    {
      "title": "HP High Court Directs Status Quo On Disputed Temple Land, Warns Officials Of Contempt Proceedings",
      "excerpt": "",
      "link": "https://www.livelaw.in/high-court/himachal-pradesh-high-court/hp-high-court-directs-status-quo-disputed-temple-land-554093",
@@ -135,6 +127,14 @@
      "link": "https://www.verdictum.in/allahabad-high-court/rakesh-kumar-yadav-v-state-of-up-and-2-others-2026ahc211987-section-173-bnss-1623753",
      "source": "Verdictum",
      "date": "2026-10-10T13:10:15+00:00",
+     "category": "High Courts"
+    },
+    {
+     "title": "Widow’s Limited Estate Right Is Transformed Into Absolute Right As Per Section 14(1) Hindu Succession Act: Supreme Court",
+     "excerpt": "The Supreme Court was considering an appeal arising from the Judgment passed by the Delhi High Court revolving around the scope of Section 51(2) of the Delhi Land Reforms Act, 1954.",
+     "link": "https://www.verdictum.in/supreme-court/sultan-singh-dead-through-lrs-and-others-v-the-financial-commissioner-2026-insc-1107-widow-estate-1623752",
+     "source": "Verdictum",
+     "date": "2026-10-10T12:30:51+00:00",
      "category": "High Courts"
     }
    ]
@@ -316,7 +316,7 @@
   {
    "source": "Bar & Bench",
    "ok": true,
-   "items": 1
+   "items": 0
   },
   {
    "source": "Verdictum",
