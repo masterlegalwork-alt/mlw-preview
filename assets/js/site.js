@@ -17,7 +17,8 @@ on();window.addEventListener("scroll",on,{passive:true});
 /* BCI notice */
 var n=d.getElementById("bci-notice"),K="mlw_notice_ack";
 if(n){var ack=false;try{ack=localStorage.getItem(K)==="1";}catch(e){}
-if(!ack)n.hidden=false;var nb=n.querySelector("button");if(nb)nb.addEventListener("click",function(){n.hidden=true;try{localStorage.setItem(K,"1");}catch(e){}});}
+if(!ack){n.hidden=false;d.body.classList.add("modal-open");}var nb=n.querySelector("[data-agree]");if(nb){if(!ack)setTimeout(function(){nb.focus();},50);nb.addEventListener("click",function(){n.hidden=true;d.body.classList.remove("modal-open");try{localStorage.setItem(K,"1");}catch(e){}});}
+n.addEventListener("keydown",function(e){if(e.key!=="Tab")return;var f=n.querySelectorAll("button,a[href]"),a0=f[0],a1=f[f.length-1];if(e.shiftKey&&d.activeElement===a0){e.preventDefault();a1.focus();}else if(!e.shiftKey&&d.activeElement===a1){e.preventDefault();a0.focus();}});}
 /* reveal + restrained parallax */
 var rv=d.querySelectorAll(".rv");
 if(rv.length&&"IntersectionObserver" in window&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});rv.forEach(function(x){io.observe(x);});}
@@ -48,3 +49,15 @@ d.querySelectorAll("[data-today]").forEach(function(x){try{x.textContent=new Dat
 /* PWA */
 if("serviceWorker" in navigator&&location.protocol==="https:"){window.addEventListener("load",function(){var b=(window.MLW_CONFIG&&MLW_CONFIG.base)||"";navigator.serviceWorker.register(b+"/sw.js").catch(function(){});});}
 })();
+/* v3: hide "What's new" if the latest item is older than 48 hours (never show stale news as today's) */
+(function(){var w=document.querySelector("[data-wnew]");if(!w)return;var d=Date.parse(w.getAttribute("data-date")||"");if(!d||Date.now()-d>48*3600*1000)w.hidden=true;})();
+/* v3: copy address */
+document.querySelectorAll("[data-copy]").forEach(function(b){b.addEventListener("click",function(){var t=b.getAttribute("data-copy"),done=function(){var o=b.textContent;b.textContent="Address copied";setTimeout(function(){b.textContent=o;},1800);};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,function(){});else{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");done();}catch(e){}a.remove();}});});
+/* v3: click-to-load maps (no Google request until asked) */
+document.querySelectorAll("[data-map]").forEach(function(m){var b=m.querySelector("button");if(!b)return;b.addEventListener("click",function(){var f=document.createElement("iframe");f.src=m.getAttribute("data-map");f.title="Map";f.loading="lazy";f.referrerPolicy="no-referrer-when-downgrade";f.setAttribute("allowfullscreen","");m.innerHTML="";m.appendChild(f);m.classList.add("on");});});
+/* v3: gentle, once-only install prompt: from the third page view, shown a single time, never on the booking form */
+(function(){var K="mlw_pwa_asked",V="mlw_views";try{var n=+(localStorage.getItem(V)||0)+1;localStorage.setItem(V,n);}catch(e){return;}
+ window.addEventListener("beforeinstallprompt",function(ev){ev.preventDefault();try{if(localStorage.getItem(K)||+localStorage.getItem(V)<3||/consultation/.test(location.pathname))return;localStorage.setItem(K,"1");}catch(e){return;}
+  var bar=document.createElement("div");bar.className="pwa-bar";bar.setAttribute("role","region");bar.setAttribute("aria-label","Install");
+  bar.innerHTML='<p>Keep cause lists, VC links and legal updates one tap away.</p><button type="button" class="btn-outline" data-i>Add to home screen</button><button type="button" class="pwa-x" data-x aria-label="Dismiss">Not now</button>';
+  document.body.appendChild(bar);bar.querySelector("[data-i]").onclick=function(){ev.prompt();bar.remove();};bar.querySelector("[data-x]").onclick=function(){bar.remove();};});})();

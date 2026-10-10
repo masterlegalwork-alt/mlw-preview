@@ -19,7 +19,7 @@
       if (C.appsScriptUrl) { url = C.appsScriptUrl; opts = { method: "POST", body: JSON.stringify(data) }; }
       else {
         url = "https://formsubmit.co/ajax/" + (C.email || "masterlegalwork@gmail.com");
-        data._subject = (data._form === "subscribe" ? "Legal updates subscription: " : "Website enquiry: ") + (data.Name || data.email || "");
+        data._subject = ({subscribe: "Legal updates subscription: ", retainer: "Corporate retainer enquiry: ", product: "Product order: "}[data._form] || "Website enquiry: ") + (data.Company || data.Name || data.email || "");
         data._template = "table"; data._captcha = "false";
         opts = { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) };
       }
