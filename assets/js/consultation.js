@@ -23,9 +23,11 @@
   var SVCFEE = W.serviceFees || {};
   var svc = function () { return val("Service requested") || "Consultation"; };
   var isSvc = function () { return svc() !== "Consultation"; };
-  var svcFee = function () { return +SVCFEE[svc()] || 0; };
+  var svcFee = function () { var o = SVCFEE[svc()]; return o ? (+o.amt || 0) : 0; };
+  var svcFrom = function () { var o = SVCFEE[svc()]; return o && o.from ? "From " : ""; };
+  var svcNote = function () { var o = SVCFEE[svc()]; return o && o.note ? " (final fee " + o.note + ")" : ""; };
   var fee = function () { return isSvc() ? svcFee() : mins() / 30 * CONFIG.feePer30[prio()]; };
-  var feeText = function () { if (isSvc()) return svcFee() ? inr(fee()) : "to be confirmed in writing before any payment"; return mins() ? inr(fee()) : ""; };
+  var feeText = function () { if (isSvc()) return svcFee() ? svcFrom() + inr(fee()) + svcNote() + ", subject to scope confirmation" : "to be confirmed in writing before any payment"; return mins() ? inr(fee()) : ""; };
   var hhmm = function (m) { var h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? "PM" : "AM", h12 = ((h + 11) % 12) + 1; return h12 + ":" + (mm < 10 ? "0" : "") + mm + " " + ap; };
 
   var now = new Date(), pad = function (n) { return (n < 10 ? "0" : "") + n; };
@@ -54,9 +56,9 @@
     $("cs-s-svc").textContent = svc();
     $("cs-s-mode").textContent = (val("Consultation type") || "Not chosen yet") + (!sv && prio() === "Urgent" ? " (urgent)" : "");
     $("cs-s-dur").textContent = sv ? "Not applicable" : (mins() ? mins() + " minutes" : "Not chosen yet");
-    if (sv) $("cs-fee").innerHTML = svcFee() ? "<b>" + inr(fee()) + "</b>, payable in advance after confirmation." : "<b>[fee to be confirmed]</b>. The fee and turnaround are confirmed to you in writing before any payment.";
+    if (sv) $("cs-fee").innerHTML = svcFee() ? "<b>" + svcFrom() + inr(fee()) + "</b>" + svcNote() + ", subject to scope confirmation; payable in advance only after the chambers confirm the scope and fee in writing." : "<b>[fee to be confirmed]</b>. The fee and turnaround are confirmed to you in writing before any payment.";
     else if (mins()) $("cs-fee").innerHTML = "<b>" + inr(fee()) + "</b> for " + mins() + " minutes" + (prio() === "Urgent" ? " (urgent)" : "") + ", payable in advance after the chambers confirm the slot.";
-    $("cs-fee-field").value = sv && !svcFee() ? "To be confirmed" : (fee() || "");
+    $("cs-fee-field").value = sv ? (svcFee() ? svcFrom() + fee() + svcNote() + " (subject to scope confirmation)" : "To be confirmed") : (fee() || "");
     $("cs-wa").href = "https://wa.me/" + CONFIG.wa + "?text=" + encodeURIComponent(summary());
   }
   function summary() {
