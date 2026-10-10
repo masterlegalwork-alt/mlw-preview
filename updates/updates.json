@@ -1,9 +1,33 @@
 {
- "generated": "2026-10-10T14:29:49.498430+00:00",
+ "generated": "2026-10-10T20:06:04.595851+00:00",
  "categories": [
   {
    "name": "Supreme Court",
    "items": [
+    {
+     "title": "CEC Protest: CJP Member Moves Supreme Court Seeking Release of Abhijeet Dipke, Saurav Das & Others Over Alleged Detention",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/top-stories/cec-protest-cjp-moves-supreme-court-seeking-release-of-abhijeet-dipke-saurav-das-others-over-alleged-detention-554107",
+     "source": "LiveLaw",
+     "date": "2026-10-10T19:32:45+00:00",
+     "category": "Supreme Court"
+    },
+    {
+     "title": "BREAKING| Menaka Guruswamy Files Habeas Petition In Supreme Court Against Detention Of Political Leaders During Delhi Protests",
+     "excerpt": "The Supreme Court will hear the matter in a special Sunday sitting tomorrow.",
+     "link": "https://www.livelaw.in/top-stories/menaka-guruswamy-files-habeas-petition-in-supreme-court-against-detention-of-political-leaders-during-delhi-protests-554085",
+     "source": "LiveLaw",
+     "date": "2026-10-10T15:01:13+00:00",
+     "category": "Supreme Court"
+    },
+    {
+     "title": "ED Moves Supreme Court Against Delhi HC Order Quashing Money Laundering Case Against NewsClick & Prabir Purkayastha",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/top-stories/ed-moves-supreme-court-against-delhi-hc-order-quashing-money-laundering-case-against-newsclick-prabir-purkayastha-554083",
+     "source": "LiveLaw",
+     "date": "2026-10-10T14:43:50+00:00",
+     "category": "Supreme Court"
+    },
     {
      "title": "BREAKING| Supreme Court To Hold Sunday Sitting To Hear Contempt Plea Over Closure Of Metro Stations & Train Cancellations In Delhi",
      "excerpt": "",
@@ -21,35 +45,11 @@
      "category": "Supreme Court"
     },
     {
-     "title": "Men received 70% of arbitrator appointments across the Supreme Court, Delhi and Bombay HCs: MKBAC study at NALSAR",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/news/law-policy/men-received-70-of-arbitrator-appointments-across-the-supreme-court-delhi-and-bombay-hcs-mkbac-study-at-nalsar",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T11:46:31+00:00",
-     "category": "Supreme Court"
-    },
-    {
      "title": "Supreme Court Constitutes Standing Committee On Judicial Well-Being",
      "excerpt": "",
      "link": "https://www.verdictum.in/supreme-court/standing-committee-on-judicial-well-being-1623747",
      "source": "Verdictum",
      "date": "2026-10-10T10:30:00+00:00",
-     "category": "Supreme Court"
-    },
-    {
-     "title": "Supreme Court dismisses lawyer’s plea seeking listing of 21 cases before Madras High Court",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/news/litigation/supreme-court-dismisses-lawyers-plea-seeking-listing-of-21-cases-before-madras-high-court",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T10:29:13+00:00",
-     "category": "Supreme Court"
-    },
-    {
-     "title": "Contempt Plea Filed In Supreme Court Alleging Arbitrary Metro Station Closures & Train Cancellations Violating Court Order",
-     "excerpt": "",
-     "link": "https://www.livelaw.in/top-stories/contempt-petition-filed-in-supreme-court-alleging-arbitrary-metro-station-closures-train-cancellations-violating-court-order-553990",
-     "source": "LiveLaw",
-     "date": "2026-10-10T09:25:14+00:00",
      "category": "Supreme Court"
     },
     {
@@ -74,6 +74,54 @@
    "name": "High Courts",
    "items": [
     {
+     "title": "Allahabad High Court Makes 1 Lakh Judgments Available In Hindi Through AI-Assisted Translation",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/news-updates/allahabad-high-court-makes-1-lakh-judgments-available-hindi-through-ai-assisted-translation-554106",
+     "source": "LiveLaw",
+     "date": "2026-10-10T17:48:35+00:00",
+     "category": "High Courts"
+    },
+    {
+     "title": "Kerala High Court designates trial lawyer P Balasubramanian Menon with longest law career as Senior Advocate",
+     "excerpt": "",
+     "link": "https://www.barandbench.com/news/kerala-high-court-designates-trial-lawyer-p-balasubramanian-menon-with-longest-law-career-as-senior-advocate",
+     "source": "Bar & Bench",
+     "date": "2026-10-10T16:22:20+00:00",
+     "category": "High Courts"
+    },
+    {
+     "title": "HP High Court Directs Status Quo On Disputed Temple Land, Warns Officials Of Contempt Proceedings",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/high-court/himachal-pradesh-high-court/hp-high-court-directs-status-quo-disputed-temple-land-554093",
+     "source": "LiveLaw",
+     "date": "2026-10-10T15:37:27+00:00",
+     "category": "High Courts"
+    },
+    {
+     "title": "Allegations Of “Jhaad-Phoonk” Cannot Attract Section 307 IPC Without Intention To Cause Death: Jharkhand High Court",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/high-court/jharkhand-high-court/jharkhand-high-court-sets-aside-attempt-murder-conviction-554092",
+     "source": "LiveLaw",
+     "date": "2026-10-10T15:36:50+00:00",
+     "category": "High Courts"
+    },
+    {
+     "title": "Delhi High Court Bar Association Condemns Detention Of Lawyers, Excessive Police Force During Protest Against CEC",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/high-court/delhi-high-court/delhi-high-court-bar-association-condemns-detention-of-lawyers-excessive-police-force-during-protest-against-cec-554084",
+     "source": "LiveLaw",
+     "date": "2026-10-10T15:05:27+00:00",
+     "category": "High Courts"
+    },
+    {
+     "title": "ED Moves Supreme Court Against Delhi HC Order Quashing Money Laundering Case Against NewsClick & Prabir Purkayastha",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/top-stories/ed-moves-supreme-court-against-delhi-hc-order-quashing-money-laundering-case-against-newsclick-prabir-purkayastha-554083",
+     "source": "LiveLaw",
+     "date": "2026-10-10T14:43:50+00:00",
+     "category": "High Courts"
+    },
+    {
      "title": "Madras High Court Orders Peaceful Celebration Of Malai Meal Kumarara Festival, Takes Note Of ASI’s Withdrawal Of Ban On Cooking At Thiruparankundram Hill",
      "excerpt": "The Madras High Court was considering a Petition filed by the petitioner seeking quashing of the order passed by the Superintending Archaeologist, Archaeological Survey of India.",
      "link": "https://www.verdictum.in/madras-high-court/pandiarajan-v-the-district-collector-celebration-malai-meal-kumarara-festival-asi-1623768",
@@ -88,54 +136,6 @@
      "source": "Verdictum",
      "date": "2026-10-10T13:10:15+00:00",
      "category": "High Courts"
-    },
-    {
-     "title": "Widow’s Limited Estate Right Is Transformed Into Absolute Right As Per Section 14(1) Hindu Succession Act: Supreme Court",
-     "excerpt": "The Supreme Court was considering an appeal arising from the Judgment passed by the Delhi High Court revolving around the scope of Section 51(2) of the Delhi Land Reforms Act, 1954.",
-     "link": "https://www.verdictum.in/supreme-court/sultan-singh-dead-through-lrs-and-others-v-the-financial-commissioner-2026-insc-1107-widow-estate-1623752",
-     "source": "Verdictum",
-     "date": "2026-10-10T12:30:51+00:00",
-     "category": "High Courts"
-    },
-    {
-     "title": "Accused Not To Be Declared Absconders Without Cogent Grounds: Delhi High Court Issues Directions To Trial Courts",
-     "excerpt": "The Court directed that judges must personally examine the report of the process server or police official before recording that an accused is deliberately avoiding service or execution of process.",
-     "link": "https://www.verdictum.in/delhi-high-court/tajinder-mohan-singh-v-the-state-government-of-nct-of-delhi-2026dhc8954-1623751",
-     "source": "Verdictum",
-     "date": "2026-10-10T11:50:30+00:00",
-     "category": "High Courts"
-    },
-    {
-     "title": "Kerala High Court Appoints Sister As Guardian For 93-Year-Old Woman With Severe Dementia & Alzheimer's",
-     "excerpt": "The Court noted that in such cases, the patient can be subjected to exploitation and prejudice; hence, it is required to appoint a guardian.",
-     "link": "https://www.verdictum.in/kerala-high-court/2026ker74368-smt-annamma-p-s-karia-v-state-of-kerala-1623746",
-     "source": "Verdictum",
-     "date": "2026-10-10T11:10:22+00:00",
-     "category": "High Courts"
-    },
-    {
-     "title": "Peaceful Protest Integral To Democracy, Not An Offence Merely Because It Is Unwelcome To Those In Authority: Calcutta High Court",
-     "excerpt": "",
-     "link": "https://www.livelaw.in/high-court/calcutta-high-court/peaceful-protest-integral-to-democracy-not-an-offence-merely-because-it-is-unwelcome-to-those-in-authority-calcutta-high-court-554014",
-     "source": "LiveLaw",
-     "date": "2026-10-10T11:05:22+00:00",
-     "category": "High Courts"
-    },
-    {
-     "title": "Supreme Court dismisses lawyer’s plea seeking listing of 21 cases before Madras High Court",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/news/litigation/supreme-court-dismisses-lawyers-plea-seeking-listing-of-21-cases-before-madras-high-court",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T10:29:13+00:00",
-     "category": "High Courts"
-    },
-    {
-     "title": "Youngsters Must Have A Sense Of National Pride In Our Institutions: Justice Gopinath Says It Is Easy To Attack Institutions",
-     "excerpt": "The Kerala High Court Judge was speaking at an event to commemorate the 150th anniversary of Vande Mataram.",
-     "link": "https://www.verdictum.in/news/kerala-high-court-judge-justice-gopinath-p-national-pride-institutions-1623750",
-     "source": "Verdictum",
-     "date": "2026-10-10T09:50:40+00:00",
-     "category": "High Courts"
     }
    ]
   },
@@ -148,14 +148,6 @@
      "link": "https://www.verdictum.in/allahabad-high-court/rakesh-kumar-yadav-v-state-of-up-and-2-others-2026ahc211987-section-173-bnss-1623753",
      "source": "Verdictum",
      "date": "2026-10-10T13:10:15+00:00",
-     "category": "Legislation"
-    },
-    {
-     "title": "Who Decides Who Owns Land? Maharashtra's Proposed Land Titling Bill",
-     "excerpt": "",
-     "link": "https://www.livelaw.in/articles/maharashtra-proposed-land-titling-bill-553969",
-     "source": "LiveLaw",
-     "date": "2026-10-09T16:40:43+00:00",
      "category": "Legislation"
     },
     {
@@ -180,6 +172,14 @@
    "name": "Criminal",
    "items": [
     {
+     "title": "ED Moves Supreme Court Against Delhi HC Order Quashing Money Laundering Case Against NewsClick & Prabir Purkayastha",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/top-stories/ed-moves-supreme-court-against-delhi-hc-order-quashing-money-laundering-case-against-newsclick-prabir-purkayastha-554083",
+     "source": "LiveLaw",
+     "date": "2026-10-10T14:43:50+00:00",
+     "category": "Criminal"
+    },
+    {
      "title": "Madras High Court Orders Peaceful Celebration Of Malai Meal Kumarara Festival, Takes Note Of ASI’s Withdrawal Of Ban On Cooking At Thiruparankundram Hill",
      "excerpt": "The Madras High Court was considering a Petition filed by the petitioner seeking quashing of the order passed by the Superintending Archaeologist, Archaeological Survey of India.",
      "link": "https://www.verdictum.in/madras-high-court/pandiarajan-v-the-district-collector-celebration-malai-meal-kumarara-festival-asi-1623768",
@@ -193,14 +193,6 @@
      "link": "https://www.livelaw.in/top-stories/delhi-court-cjp-leader-ratna-singh-fir-against-cops-over-illegal-detention-554074",
      "source": "LiveLaw",
      "date": "2026-10-10T13:10:22+00:00",
-     "category": "Criminal"
-    },
-    {
-     "title": "CJP protests: Delhi court rejects legal head Ratna Singh's plea for FIR against police officials who detained her",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/news/cjp-protests-delhi-court-rejects-legal-head-ratna-singhs-plea-for-fir-against-police-officials-who-detained-her",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T12:35:08+00:00",
      "category": "Criminal"
     },
     {
@@ -220,14 +212,6 @@
      "category": "Criminal"
     },
     {
-     "title": "Delhi court says Sharjeel Imam violated interim bail condition by interacting with media",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/news/litigation/delhi-court-says-sharjeel-imam-violated-interim-bail-condition-by-interacting-with-media",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T11:15:09+00:00",
-     "category": "Criminal"
-    },
-    {
      "title": "CEC Protest: CJP Legal Affairs Head Ratna Singh Moves Delhi Court Seeking FIR Against Cops Over 'Illegal Detention'",
      "excerpt": "",
      "link": "https://www.livelaw.in/top-stories/delhi-court-ratna-singh-cjp-fir-illegal-detention-gyanesh-kumar-protest-554049",
@@ -242,12 +226,36 @@
      "source": "LiveLaw",
      "date": "2026-10-10T08:16:13+00:00",
      "category": "Criminal"
+    },
+    {
+     "title": "Delhi Court Dismisses Deputy CM Parvesh Verma's Criminal Defamation Case Against AAP Leader Saurabh Bhardwaj",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/news-updates/delhi-court-dismisses-deputy-cm-parvesh-vermas-criminal-defamation-case-against-aap-leader-saurabh-bhardwaj-554036",
+     "source": "LiveLaw",
+     "date": "2026-10-10T07:29:51+00:00",
+     "category": "Criminal"
     }
    ]
   },
   {
    "name": "Other",
    "items": [
+    {
+     "title": "Call For Blogs: NUSRL Ranchi's 'The Policy Chronicle' Invites Submissions On Rolling Basis",
+     "excerpt": "",
+     "link": "https://www.livelaw.in/lawschool/call-for-papers/call-for-blogs-nusrl-ranchis-policy-chronicle-invites-submissions-rolling-basis-554105",
+     "source": "LiveLaw",
+     "date": "2026-10-10T17:40:50+00:00",
+     "category": "Other"
+    },
+    {
+     "title": "Senior & Junior Consultant Vacancy At Delhi Commission for Protection of Child Rights (DCPCR)",
+     "excerpt": "",
+     "link": "https://www.verdictum.in/job-updates/delhi-commission-for-protection-of-child-rights-1623756",
+     "source": "Verdictum",
+     "date": "2026-10-10T14:30:35+00:00",
+     "category": "Other"
+    },
     {
      "title": "Questioning Govt On Public Issues Not Defamation, Politicians Must Accept Criticism In Democracy: Delhi Court",
      "excerpt": "",
@@ -257,27 +265,11 @@
      "category": "Other"
     },
     {
-     "title": "Delhi Riots: Court convicts Tahir Hussain for abetment",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/news/delhi-riots-court-convicts-tahir-hussain-for-abetment",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T11:10:11+00:00",
-     "category": "Other"
-    },
-    {
      "title": "Delhi Riots: Court Convicts Tahir Hussain For Abetment Of Rioting, Acquits Him Of Other Charges",
      "excerpt": "",
      "link": "https://www.livelaw.in/news-updates/delhi-riots-court-convicts-tahir-hussain-for-abetment-of-rioting-acquits-him-of-other-charges-554061",
      "source": "LiveLaw",
      "date": "2026-10-10T10:28:05+00:00",
-     "category": "Other"
-    },
-    {
-     "title": "What is good for the goose is good for the gander",
-     "excerpt": "",
-     "link": "https://www.barandbench.com/columns/what-is-good-for-the-goose-is-good-for-the-gander",
-     "source": "Bar & Bench",
-     "date": "2026-10-10T10:22:00+00:00",
      "category": "Other"
     },
     {
@@ -324,12 +316,12 @@
   {
    "source": "Bar & Bench",
    "ok": true,
-   "items": 18
+   "items": 1
   },
   {
    "source": "Verdictum",
    "ok": true,
-   "items": 43
+   "items": 42
   },
   {
    "source": "LawTrend",
